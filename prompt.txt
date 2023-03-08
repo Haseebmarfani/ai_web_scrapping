@@ -1,0 +1,4 @@
+Write a concise summary from the following text:
+<<FEED>>
+
+Write a concise summary:
