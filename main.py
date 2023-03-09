@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 import openai
-requests.get('https://www.w3.org/MarkUp/Guide/')
-url = requests.get('https://www.w3.org/MarkUp/Guide/').text
+userget = input("Enter the URL: ")
+requests.get(str(userget))
+url = requests.get(str(userget)).text
 soup = BeautifulSoup(url, 'html.parser')
 import json
 
@@ -19,9 +20,10 @@ def save_file(file_name, data):
         outfile.write(data)
         
 #div = soup.find('div', attrs={'class':'hh hi hj hk hl'})
-
-text = soup.find_all('p')[3].text   
-print(text)
+try:
+    text = soup.find_all('p').text   
+except:
+    text = soup.find('body').text
 
         
     
@@ -62,5 +64,7 @@ image_url = response['data'][0]['url']
 URL = image_url
 response = requests.get(URL)
 open('image.png', 'wb').write(response.content)
+
+
 
 
